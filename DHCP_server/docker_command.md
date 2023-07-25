@@ -2,9 +2,28 @@
 
 
 ```shell
-sudo docker run -itd --name mzc-ubuntu-test -v $(pwd)/dhcp-volume:/home ubuntu:jammy-20230624
+sudo docker run \
+-itd \
+--name mzc-ubuntu-test \
+-v $(pwd)/dhcp-volume:/home \
+# Case: independent network (network and port mapping)
+--network=mzc-network-dhcp \
+-p 0.0.0.0:67-68:67-68 \
+# Case: host network (no network and port mapping)
+# --network=host \
+ubuntu:jammy-20230624
 ```
 
+
+```shell
+sudo docker run \
+-itd \
+--name mzc-ubuntu-test \
+-v $(pwd)/dhcp-volume:/home \
+--network=mzc-network-dhcp \
+-p 0.0.0.0:67-68:67-68 \
+ubuntu:jammy-20230624
+```
 
 ### docker network create
 ```shell
