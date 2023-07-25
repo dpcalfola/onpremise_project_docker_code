@@ -17,7 +17,7 @@ mzc-network-ftp-logBackup
 docker volume create mzc-volume-ftp-logBackup
 
 # Build ftp image
-docker build -t mzc-ftp-logBackup:v1.0 -f ./FTP_server/Dockerfile .
+docker build -t mzc-ftp-image:v1.0 -f ./FTP_server/Dockerfile .
 
 # Run ftp container
 docker run \
@@ -27,9 +27,7 @@ docker run \
 -v mzc-volume-ftp-logBackup:/home \
 -p 21:21 \
 -p 20:20 \
-mzc-ftp-logBackup:v1.0
-
-
+mzc-ftp-image:v1.0
 
 
 
