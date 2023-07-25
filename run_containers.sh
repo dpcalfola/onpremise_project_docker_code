@@ -18,7 +18,7 @@ docker volume create mzc-volume-ftp-logBackup
 
 # Build ftp image
 cd FTP_server
-docker build -t mzc-ftp-image:v1.0 -f .
+docker build -t mzc-ftp-image --no-cache .
 cd ..
 
 # Run ftp container
@@ -29,7 +29,7 @@ docker run \
 -v mzc-volume-ftp-logBackup:/home \
 -p 21:21 \
 -p 20:20 \
-mzc-ftp-image:v1.0
+mzc-ftp-image
 
 
 
