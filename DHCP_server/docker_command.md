@@ -39,3 +39,24 @@ mzc-network-dhcp
 sudo docker volume create mzc-volume-dhcp
 ```
 
+
+
+
+# Docker VM command
+
+
+### image build
+```shell
+docker build -t mzc-dhcp-server .
+```
+
+
+### container run
+```shell
+docker run \
+-d \
+--name mzc-dhcp-1 \
+--network=host \
+mzc-dhcp-image
+```
+
