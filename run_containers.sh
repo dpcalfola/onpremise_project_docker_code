@@ -29,16 +29,28 @@ cd FTP_server
 docker build -t mzc-ftp-image --no-cache .
 cd ..
 
-# Run ftp container
+## Run ftp container
+
+# Run ftp container (with docker network)
+#docker run \
+#-d \
+#--name mzc-ftp-logBackup-1 \
+#--network mzc-network-ftp-logBackup \
+#-v mzc-volume-ftp-logBackup:/home \
+#-p 21:21 \
+#-p 20:20 \
+#mzc-ftp-image
+
+
+
+# Run ftp container (without docker network)
 docker run \
 -d \
 --name mzc-ftp-logBackup-1 \
---network mzc-network-ftp-logBackup \
 -v mzc-volume-ftp-logBackup:/home \
 -p 21:21 \
 -p 20:20 \
 mzc-ftp-image
-
 
 
 #### DB ####
@@ -55,18 +67,28 @@ mzc-ftp-image
 # Create DB volume:
 docker volume create mzc-volume-DB-mysql
 
-# Run DB container
+## Run DB container (with docker network)
+#docker run \
+#-d \
+#--name mzc-DB-mysql \
+#-p 3306:3306 \
+#--network mzc-network-DB-mysql \
+#-v mzc-volume-DB-mysql:/var/lib/mysql \
+#-e MYSQL_ROOT_PASSWORD=mzc-password \
+#-e MYSQL_DATABASE=mzc-database \
+#mysql:5.7
+
+
+
+# Run DB container (without docker network)
 docker run \
 -d \
 --name mzc-DB-mysql \
 -p 3306:3306 \
---network mzc-network-DB-mysql \
 -v mzc-volume-DB-mysql:/var/lib/mysql \
 -e MYSQL_ROOT_PASSWORD=mzc-password \
 -e MYSQL_DATABASE=mzc-database \
 mysql:5.7
-
-
 
 
 # Docker ps
