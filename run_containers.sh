@@ -48,6 +48,7 @@ docker run \
 -d \
 --name mzc-ftp-logBackup-1 \
 -v mzc-volume-ftp-logBackup:/home \
+--network=host \
 -p 21:21 \
 -p 20:20 \
 mzc-ftp-image
@@ -86,6 +87,7 @@ docker run \
 --name mzc-DB-mysql \
 -p 3306:3306 \
 -v mzc-volume-DB-mysql:/var/lib/mysql \
+--network=host \
 -e MYSQL_ROOT_PASSWORD=mzc-password \
 -e MYSQL_DATABASE=mzc-database \
 mysql:5.7
