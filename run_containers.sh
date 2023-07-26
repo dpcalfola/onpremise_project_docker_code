@@ -3,15 +3,23 @@
 # **** Run as root ****
 
 
+### Docker network issue
+### Virtual-box host-only adaptor dose not support port forwarding
+### So, I don't use docker network,
+### and 0.0.0.0:port would be used instead of
+### All docker network commands are commented
+
+
 
 #### FTP ####
 
+### COMMENTED DOCKER NETWORK COMMANDS
 # Create ftp network
-docker network create \
---driver bridge \
---subnet=100.2.1.4/30 \
---gateway=100.2.1.5 \
-mzc-network-ftp-logBackup
+#docker network create \
+#--driver bridge \
+#--subnet=100.2.1.4/30 \
+#--gateway=100.2.1.5 \
+#mzc-network-ftp-logBackup
 
 # Create ftp volume:
 docker volume create mzc-volume-ftp-logBackup
@@ -35,12 +43,13 @@ mzc-ftp-image
 
 #### DB ####
 
+### COMMENTED DOCKER NETWORK COMMANDS
 # Create DB network
-docker network create \
---driver bridge \
---subnet=100.2.1.12/30 \
---gateway=100.2.1.13 \
-mzc-network-DB-mysql
+#docker network create \
+#--driver bridge \
+#--subnet=100.2.1.12/30 \
+#--gateway=100.2.1.13 \
+#mzc-network-DB-mysql
 
 
 # Create DB volume:
