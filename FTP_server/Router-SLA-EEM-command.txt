@@ -72,6 +72,7 @@ EEM setting
 
     * Configure FTP server information
 
+        < 양식 >
         (config)#
         event manager environment ftp_server_ip <FTP_SERVER_IP>
         event manager environment ftp_username <FTP_USERNAME>
@@ -86,19 +87,27 @@ EEM setting
         event manager environment remote_directory backup-data
 
 
+    * EEM track 과 SLA 연동
+        (config)#
+        track 40 rtr 40 reachability # SLA 20번을 EEM track 20번과 연동 시킨다
+        exit
+
     * Configure EEM applet (example)
 
         (config)#
-        event manager applet disorder-pc9-backup
+        event manager applet disorder-40
 
         (config-applet)#
-        event track 20 state any
-        action 1.0 syslog msg "PC9 state is changed"
+        event track 40 state down
+        action 1.0 syslog msg "Connection with {targetDeviceName} is lost"
         action 2.0 cli command "enable"
         action 2.1 cli command "configure terminal"
         action 2.2 cli command "file prompt quiet"
         action 2.3 cli command "exit"
-        action 3.0 cli command "show clock"
-        action 3.1 cli command "show ip sla statistics 20"
-        action 3.2 cli command "show ip int brief"
-        action 4.0 cli command "write ftp://${ftp_username:$ftp_password}@${ftp_server_ip}/${remote_directory}/center_switch_pc9_${_time_stamp}.txt"
+        action 4.0 cli command "show ip sla statistics 40 | redirect ftp://mzc-ftp:mzc-password@192.168.62.3/backup-data/device_name_SLA_state.txt"
+        action 4.1 cli command "show ip sla configuration 40 | redirect ftp://mzc-ftp:mzc-password@192.168.62.3/backup-data/device_name_SLA_information.txt"
+        exit
+
+    * Show EEM applet
+        #
+        show event manager policy registered
