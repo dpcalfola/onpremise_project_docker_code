@@ -6,6 +6,7 @@ services:
       context: .
       args:
         - DEV=true
+    container_name: mzc-django
     ports:
       - "8000:8000"
     volumes:
@@ -25,7 +26,7 @@ services:
 
   nginx:
     image: nginx:latest
-    container_name: nginx_server
+    container_name: mzc_nginx
     volumes:
       - ./nginx:/etc/nginx/conf.d
       - ./static:/app/static
@@ -38,7 +39,7 @@ services:
 
   db:
     image: postgres:13
-    container_name: postgres_db
+    container_name: mzc_postgres_db
     volumes:
       - mzc_db_volume:/var/lib/postgresql/data
     environment:
