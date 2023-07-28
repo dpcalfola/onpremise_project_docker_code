@@ -105,5 +105,12 @@ cd ..
 
 
 
-# Docker ps
+
+###############    If there's exited container -> Start container    ##################
+
+docker start $(docker ps -aq status=exited)
+
+
+######################    Finally Checkup docker processes   ###########################
+
 docker ps
