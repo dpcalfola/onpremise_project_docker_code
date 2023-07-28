@@ -12,6 +12,7 @@ services:
       - ./app:/app
       - ./static:/app/static
       - ./media:/app/media
+      - ./templates:/app/templates
     command: >
       sh -c "python manage.py runserver 0.0.0.0:8000"
     environment:
@@ -29,6 +30,7 @@ services:
       - ./nginx:/etc/nginx/conf.d
       - ./static:/app/static
       - ./media:/app/media
+      - ./templates:/app/templates
     ports:
       - "80:80"
     depends_on:
