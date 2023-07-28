@@ -75,7 +75,9 @@ EEM setting
         action 2.0 cli command "enable"
         action 2.1 cli command "configure terminal"
         action 2.2 cli command "file prompt quiet"
-        action 2.3 cli command "exit"
+        action 2.3 cli command "interface FastEthernet <interface_number>"
+        action 2.4 cli command "shutdown"
+        action 3.0 cli command "end"
         action 4.0 cli command "show ip sla statistics 40 | redirect ftp://mzc-ftp:mzc-password@192.168.62.3/backup-data/<device_name_SLA_number>_state.txt"
         action 4.1 cli command "show ip sla configuration 40 | redirect ftp://mzc-ftp:mzc-password@192.168.62.3/backup-data/<device_name_SLA_number>_information.txt"
         exit
