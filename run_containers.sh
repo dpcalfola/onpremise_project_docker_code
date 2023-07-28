@@ -11,7 +11,7 @@
 
 
 
-#### FTP ####
+#####################################    FTP    ########################################
 
 ### COMMENTED DOCKER NETWORK COMMANDS
 # Create ftp network
@@ -54,7 +54,8 @@ docker run \
 mzc-ftp-image
 
 
-#### DB ####
+#################################    DB: MySQL for General Purpose   ####################################
+
 
 ### COMMENTED DOCKER NETWORK COMMANDS
 # Create DB network
@@ -91,6 +92,17 @@ docker run \
 -e MYSQL_ROOT_PASSWORD=mzc-password \
 -e MYSQL_DATABASE=mzc-database \
 mysql:5.7
+
+
+
+
+#################################    Web_server   ####################################
+
+cd Web_server
+docker compose build --no-cache
+docker compose up -d
+cd ..
+
 
 
 # Docker ps
