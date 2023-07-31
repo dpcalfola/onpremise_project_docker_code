@@ -17,6 +17,12 @@ docker-compose run --rm web sh -c "python manage.py migrate"
 ```
 
 
+### Collect Static
+```shell
+docker-compose run --rm web sh -c "python manage.py collectstatic"
+```
+
+
 ### Run Test Code
 ```shell
 docker-compose run --rm web sh -c "python manage.py test"

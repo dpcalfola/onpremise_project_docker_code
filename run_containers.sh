@@ -54,49 +54,7 @@ docker run \
 mzc-ftp-image
 
 
-#################################    DB: MySQL for General Purpose   ####################################
-
-
-### COMMENTED DOCKER NETWORK COMMANDS
-# Create DB network
-#docker network create \
-#--driver bridge \
-#--subnet=100.2.1.12/30 \
-#--gateway=100.2.1.13 \
-#mzc-network-DB-mysql
-
-
-# Create DB volume:
-docker volume create mzc-volume-DB-mysql
-
-## Run DB container (with docker network)
-#docker run \
-#-d \
-#--name mzc-DB-mysql \
-#-p 3306:3306 \
-#--network mzc-network-DB-mysql \
-#-v mzc-volume-DB-mysql:/var/lib/mysql \
-#-e MYSQL_ROOT_PASSWORD=mzc-password \
-#-e MYSQL_DATABASE=mzc-database \
-#mysql:5.7
-
-
-
-# Run DB container (without docker network)
-docker run \
--d \
---name mzc-DB-mysql \
--p 3306:3306 \
--v mzc-volume-DB-mysql:/var/lib/mysql \
---network=host \
--e MYSQL_ROOT_PASSWORD=mzc-password \
--e MYSQL_DATABASE=mzc-database \
-mysql:5.7
-
-
-
-
-#################################    Web_server   ####################################
+##########################    Web_service docker compose   ############################
 
 cd Web_server
 docker compose build --no-cache
