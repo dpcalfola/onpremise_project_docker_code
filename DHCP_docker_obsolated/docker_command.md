@@ -57,6 +57,6 @@ docker run \
 -d \
 --name mzc-dhcp-1 \
 --network=host \
-mzc-dhcp-image
+mzc-dhcp-server
 ```
 

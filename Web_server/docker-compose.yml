@@ -7,8 +7,6 @@ services:
       args:
         - DEV=true
     container_name: mzc-django
-    ports:
-      - "8000:8000"
     volumes:
       - ./app:/app
       - ./static:/app/static
