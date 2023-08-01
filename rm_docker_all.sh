@@ -1,6 +1,9 @@
 #!/bin/bash
 
+# Run as root
 # Remove all mzc containers and images
+
+# This script does not affect docker containers unrelated to MZC
 
 # Stop containers
 sudo docker stop mzc-ftp-logBackup-1

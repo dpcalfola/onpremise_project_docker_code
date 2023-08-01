@@ -1,11 +1,12 @@
 #!/bin/bash
 
-# Critical Issue: Docker engine installation would be failed now
+# Run as root
 
 
 # apt-get update, upgrade
 apt-get update -y
 apt-get upgrade -y
+
 
 # install dependency package
 apt-get install git -y

@@ -8,10 +8,10 @@ sudo cp 00-installer-config.yaml /etc/netplan/00-installer-config.yaml
 sudo netplan apply
 
 
-# DHCP interface setting
+# Copy DHCP interface setting file
 sudo cp isc-dhcp-server /etc/default/isc-dhcp-server
 
-# DHCP configuration
+# Copy DHCP configuration file
 sudo cp dhcpd.conf /etc/dhcp/dhcpd.conf
 
 # DHCP start

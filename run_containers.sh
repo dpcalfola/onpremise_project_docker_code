@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# **** Run as root ****
+# Run as root
 
 
 ### Docker network issue

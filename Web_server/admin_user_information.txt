@@ -1,0 +1,2 @@
+Django admin username: mzc-user
+Django admin password: mzc-password

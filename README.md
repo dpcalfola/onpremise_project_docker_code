@@ -14,10 +14,6 @@
    ```
    
 3. Install dependency package (included docker engine)
-
-   - Critical Issue: Docker engine installation would be failed now (from 2023-07-26 ~) 
-   - So, you should install docker engine manually
-   
    ```shell
    sudo sh install_dependency.sh
    ```
