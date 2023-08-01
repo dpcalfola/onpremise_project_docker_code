@@ -1,0 +1,111 @@
+< Test 1 >
+
+SLA setting test
+
+        (config)#
+            ip sla 20
+            icmp-echo 101.56.56.254
+            timeout 1000
+            frequency 1
+            exit
+
+        (config)#
+            ip sla schedule 20 life forever start-time now
+
+
+* 확인
+    #
+    show ip sla statistics 20
+
+
+    #
+    show ip sla configuration 20
+
+
+
+EEM setting
+
+
+        (config)#
+        track 20 rtr 20 reachability
+        exit
+
+        (config)#
+        event manager applet disorder-20
+
+        (config-applet)#
+        event track 20 state down
+        action 1.0 syslog msg "Connection with BB2 is lost"
+        action 2.0 cli command "enable"
+        action 2.1 cli command "configure terminal"
+        action 2.2 cli command "file prompt quiet"
+        action 2.3 cli command "interface FastEthernet 1/11"
+        action 2.4 cli command "shutdown"
+        action 3.0 cli command "end"
+        action 4.0 cli command "show ip sla statistics 20 | redirect ftp://mzc-ftp:mzc-password@120.10.10.17/backup-data/IT_Research_SLA_20_state.txt"
+        action 4.1 cli command "show ip sla configuration 20 | redirect ftp://mzc-ftp:mzc-password@120.10.10.17/backup-data/IT_Research_SLA_20_information.txt"
+        exit
+
+
+(확인)
+    #
+    show event manager policy registered
+
+
+
+
+
+
+
+< Test 2 >
+
+SLA setting test
+
+        (config)#
+            ip sla 20
+            icmp-echo 111.10.10.10
+            timeout 1000
+            frequency 1
+            exit
+
+        (config)#
+            ip sla schedule 20 life forever start-time now
+
+
+* 확인
+    #
+    show ip sla statistics 20
+
+
+    #
+    show ip sla configuration 20
+
+
+
+EEM setting
+
+
+        (config)#
+        track 20 rtr 20 reachability
+        exit
+
+        (config)#
+        event manager applet disorder-conn-bb
+
+        (config-applet)#
+        event track 20 state down
+        action 1.0 syslog msg "Connection with BB has been lost"
+        action 2.0 cli command "enable"
+        action 2.1 cli command "configure terminal"
+        action 2.2 cli command "file prompt quiet"
+        action 2.3 cli command "interface FastEthernet 1/1"
+        action 2.4 cli command "shutdown"
+        action 3.0 cli command "end"
+        action 4.0 cli command "show ip sla statistics 20 | redirect ftp://mzc-ftp:mzc-password@120.10.10.17/backup-data/IT_Research_SLA_20_state.txt"
+        action 4.1 cli command "show ip sla configuration 20 | redirect ftp://mzc-ftp:mzc-password@120.10.10.17/backup-data/IT_Research_SLA_20_information.txt"
+        exit
+
+
+(확인)
+    #
+    show event manager policy registered

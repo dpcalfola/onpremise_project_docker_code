@@ -16,33 +16,20 @@ sudo docker volume create mzc-volume-ftp-logBackup
 
 
 
-### docker run command:
-```shell
-sudo docker run \
--itd \
---name mzc-ftp-logBackup-1 \
---network mzc-network-ftp-logBackup \
--v mzc-volume-ftp-logBackup:/home \
--p 48237:20 \
--p 21:21 \
-ubuntu:jammy-20230624
-```
-
-
 
 ### Dockerfile build
 ```shell
-sudo docker build -t dpcalfola/mzc-ftp:v0.1 .
+sudo docker build -t dpcalfola/mzc-ftp .
 ```
 
 ### Dockerfile build (no cache)
 ```shell
-sudo docker build -t dpcalfola/mzc-ftp:v0.1 --no-cache .
+sudo docker build -t dpcalfola/mzc-ftp --no-cache .
 ```
 
 
 
-### docker run with dockerfile images
+### docker run with dockerfile images (with docker network)
 ```shell
 sudo docker run \
 -d \
@@ -51,7 +38,20 @@ sudo docker run \
 -v mzc-volume-ftp-logBackup:/home \
 -p 21:21 \
 -p 20:20 \
-dpcalfola/mzc-ftp:v0.1
+dpcalfola/mzc-ftp
+```
+
+
+### docker run with dockerfile images (without docker network)
+```shell
+sudo docker run \
+-d \
+--name mzc-ftp-logBackup-1 \
+--network=host \
+-v mzc-volume-ftp-logBackup:/home \
+-p 21:21 \
+-p 20:20 \
+dpcalfola/mzc-ftp
 ```
 
 

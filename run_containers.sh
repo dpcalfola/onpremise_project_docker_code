@@ -54,6 +54,10 @@ docker run \
 mzc-ftp-image
 
 
+
+
+
+
 ##########################    Web_service docker compose   ############################
 
 cd Web_server
